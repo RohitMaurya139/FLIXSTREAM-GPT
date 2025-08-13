@@ -1,55 +1,110 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { BG_IMG } from "../utils/Constants";
-import { checkValidData } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { checkValidData, newUserData } from "../utils/validate";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
-  // State to toggle between Sign In and Sign Up forms
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isSignIn, setIsSignIn] = useState(true);
-  // State to hold any validation error message to display
   const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
-  // Refs to access input element values directly without controlled components
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
   const dob = useRef(null);
 
-  // Toggles between "Sign In" and "Sign Up" form views
-  function ToggleSignIn() {
+  function toggleSignIn() {
     setIsSignIn(!isSignIn);
+    setErrorMessage(null);
+    setSuccessMessage(null);
   }
 
-  // Validate inputs when user clicks the submit button
-  const HandelButtonClick = () => {
+  const handleButtonClick = async () => {
     let message;
     if (isSignIn) {
-      // For Sign In, only validate email and password
       message = checkValidData(email.current.value, password.current.value);
+      if (!message) {
+        try {
+          const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email.current.value,
+            password.current.value
+          );
+          const user = userCredential.user;
+          // Dispatch user info after sign in
+          dispatch(
+            addUser({
+              uid: user.uid,
+              email: user.email,
+              displayName: user.displayName || "",
+            })
+          );
+          setSuccessMessage("✅ Successfully signed in!");
+          setErrorMessage(null);
+          navigate("/browse");
+        } catch (error) {
+          setErrorMessage(error.message);
+          setSuccessMessage(null);
+          return;
+        }
+      }
     } else {
-      // For Sign Up, validate email, password, name, and date of birth
-      message = checkValidData(
+      message = newUserData(
         email.current.value,
         password.current.value,
         name.current.value,
         dob.current.value
       );
-    }
+      if (!message) {
+        try {
+          const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email.current.value,
+            password.current.value
+          );
+          const user = userCredential.user;
 
-    // If validation returns a message (error), update errorMessage state to show it; else clear error
-    if (message !== null) {
-      setErrorMessage(message);
-    } else {
-      setErrorMessage(null);
+          // Update displayName properly with the user returned by createUserWithEmailAndPassword
+          await updateProfile(user, { displayName: name.current.value });
+
+          // Update Redux store after profile update
+          dispatch(
+            addUser({
+              uid: user.uid,
+              email: user.email,
+              displayName: name.current.value,
+            })
+          );
+
+          setSuccessMessage("🎉 Account created successfully!");
+          setErrorMessage(null);
+          navigate("/browse");
+        } catch (error) {
+          setErrorMessage(error.message);
+          setSuccessMessage(null);
+          return;
+        }
+      }
     }
+    setErrorMessage(message);
+    if (message) setSuccessMessage(null);
   };
 
   return (
     <div className="relative min-h-screen w-full flex flex-col">
-      {/* Header component remains fixed at top */}
       <Header />
 
-      {/* Fullscreen background image with overlay for dark tint */}
       <div className="absolute inset-0 -z-10">
         <img
           src={BG_IMG}
@@ -59,9 +114,7 @@ const Login = () => {
         <div className="absolute inset-0 bg-black opacity-60"></div>
       </div>
 
-      {/* Main content area with scroll support and centered layout */}
       <main className="relative z-10 flex-grow flex flex-col items-center px-4 py-10 max-w-4xl mx-auto w-full overflow-y-auto mt-16 sm:mt-24 md:mt-20 lg:mt-16">
-        {/* Text header section above form */}
         <div className="max-w-xl text-center mb-10 px-2 sm:px-0">
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-4 ">
             Unlimited movies, TV shows and more
@@ -71,21 +124,17 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Form container */}
         <form
-          onSubmit={(e) => e.preventDefault()} // Prevent default page reload on form submit
+          onSubmit={(e) => e.preventDefault()}
           className="p-8 rounded-lg max-w-md w-full shadow-lg text-white"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }} // Semi-transparent black bg
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
         >
-          {/* Form heading changes based on sign-in or sign-up mode */}
           <h2 className="text-3xl font-bold mb-6 text-center">
             {isSignIn ? "Sign In" : "Sign Up"}
           </h2>
 
-          {/* Sign Up additional inputs (when !isSignIn) */}
           {!isSignIn && (
             <>
-              {/* Full Name Input */}
               <input
                 ref={name}
                 type="text"
@@ -94,11 +143,10 @@ const Login = () => {
                 required
               />
 
-              {/* Gender Select Dropdown */}
               <select
                 className="w-full p-3 mb-4 rounded border border-gray-600 bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
                 required
-                defaultValue="" // Placeholder effect
+                defaultValue=""
               >
                 <option value="" disabled className="text-red-500">
                   Select Gender
@@ -108,7 +156,6 @@ const Login = () => {
                 <option value="other">Other</option>
               </select>
 
-              {/* Date of Birth Input */}
               <input
                 ref={dob}
                 type="date"
@@ -119,7 +166,6 @@ const Login = () => {
             </>
           )}
 
-          {/* Email Input (Both Sign In and Sign Up) */}
           <input
             ref={email}
             type="email"
@@ -128,7 +174,6 @@ const Login = () => {
             required
           />
 
-          {/* Password Input (Both Sign In and Sign Up) */}
           <input
             ref={password}
             type="password"
@@ -137,35 +182,24 @@ const Login = () => {
             required
           />
 
-          {/* Display error message if any */}
-          <p className="text-red-600 font-semibold mb-4">{errorMessage}</p>
+          {errorMessage && (
+            <p className="text-red-600 font-semibold mb-4">{errorMessage}</p>
+          )}
 
-          {/* Submit Button */}
+          {successMessage && (
+            <p className="text-green-600 font-semibold mb-4">
+              {successMessage}
+            </p>
+          )}
+
           <button
             type="submit"
             className="w-full py-3 bg-red-600 font-bold rounded hover:bg-red-700 transition cursor-pointer mb-4"
-            onClick={HandelButtonClick} // Validate input on click
+            onClick={handleButtonClick}
           >
             {isSignIn ? "Sign In" : "Sign Up"}
           </button>
 
-          {/* Additional elements only on Sign In */}
-          {isSignIn && (
-            <>
-              <p className="text-center my-4 text-gray-400 font-semibold">OR</p>
-              <button
-                type="button"
-                className="w-full py-3 bg-gray-700 font-bold rounded hover:bg-gray-800 transition cursor-pointer mb-6"
-              >
-                Use a Sign In code
-              </button>
-              <p className="text-center mb-6 text-white underline cursor-pointer font-semibold">
-                Forgot Password?
-              </p>
-            </>
-          )}
-
-          {/* Remember me checkbox */}
           <div className="flex items-center mb-6 space-x-2">
             <input
               type="checkbox"
@@ -181,13 +215,12 @@ const Login = () => {
             </label>
           </div>
 
-          {/* Toggle between Sign In and Sign Up prompt */}
           {isSignIn ? (
             <p className="text-gray-400 font-semibold mb-2">
               New to Netflix?{" "}
               <span
                 className="text-white cursor-pointer font-semibold underline"
-                onClick={ToggleSignIn}
+                onClick={toggleSignIn}
               >
                 Sign up now.
               </span>
@@ -197,14 +230,13 @@ const Login = () => {
               Already a User?{" "}
               <span
                 className="text-white cursor-pointer font-semibold underline"
-                onClick={ToggleSignIn}
+                onClick={toggleSignIn}
               >
                 Sign In now.
               </span>
             </p>
           )}
 
-          {/* reCAPTCHA protection notice */}
           <p className="text-sm text-gray-400">
             This page is protected by Google reCAPTCHA to ensure you're not a
             bot.
