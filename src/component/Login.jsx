@@ -18,8 +18,7 @@ import { auth } from "../utils/firebase"; // Firebase auth instance
 // Import custom validation helper functions
 import { checkValidData, newUserData } from "../utils/validate";
 
-// Import navigation and Redux hooks
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch } from "react-redux";
 
 // Redux action to store user info
@@ -36,7 +35,7 @@ import { addUser } from "../utils/userSlice";
  * - Redirecting after login
  */
 const Login = () => {
-  const navigate = useNavigate(); // Navigation without page reload
+  
   const dispatch = useDispatch(); // Send actions to Redux store
 
   // Determine if the form is for Sign In or Sign Up
@@ -101,7 +100,7 @@ const Login = () => {
           setErrorMessage(null);
 
           // Redirect to Browse page
-          navigate("/browse");
+          // navigate("/browse");
         } catch (error) {
           setErrorMessage(error.message);
           setSuccessMessage(null);
@@ -142,7 +141,7 @@ const Login = () => {
 
           setSuccessMessage("🎉 Account created successfully!");
           setErrorMessage(null);
-          navigate("/browse");
+          // navigate("/browse"); this is done from header
         } catch (error) {
           setErrorMessage(error.message);
           setSuccessMessage(null);

@@ -5,6 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 // Import the reducer function for managing user state from userSlice.js
 // A reducer is a function that updates a specific part of the Redux state
 import userSliceReducer from "./userSlice";
+import movieSliceReducer from "./movieSlice"
 
 /**
  * Configure and create the Redux store for the application.
@@ -23,6 +24,7 @@ const appStore = configureStore({
     // Key: 'user' becomes the state.user inside Redux store
     // Value: the reducer function that updates that state
     user: userSliceReducer,
+    movies: movieSliceReducer,
   },
 });
 

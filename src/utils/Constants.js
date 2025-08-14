@@ -3,4 +3,23 @@ const SVG_D = "M105.06233,14.2806261 L110.999156,30 C109.249227,29.7497422 107.5
 
 const BG_IMG =
   "https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_large.jpg"
-export {SVG_D,BG_IMG}
+
+  const API_ACCESS_TOKEN =
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMWMxZjE4Zjc0ZmQzMTdhZDc3NTEwMzE2YjA0YTA3MyIsIm5iZiI6MTc1NTE0NTAyMC42ODQsInN1YiI6IjY4OWQ2MzNjNjhjMzc2MTVjM2M3MDdjOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rtElZbzj0VY4hX8_pEnMXGUACGUwlnUTUQtzjNHNgyw";
+
+const TMDB_API_KEY = "e1c1f18f74fd317ad77510316b04a073";
+    
+
+
+// Replace with your actual Bearer token
+ const bearerToken ="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMWMxZjE4Zjc0ZmQzMTdhZDc3NTEwMzE2YjA0YTA3MyIsIm5iZiI6MTc1NTE0NTAyMC42ODQsInN1YiI6IjY4OWQ2MzNjNjhjMzc2MTVjM2M3MDdjOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rtElZbzj0VY4hX8_pEnMXGUACGUwlnUTUQtzjNHNgyw";
+ const API_OPTION= {
+         method: "GET",
+         headers: {
+           Authorization: `Bearer ${bearerToken}`,
+           accept: "application/json",
+         },
+       }
+
+
+export { SVG_D, BG_IMG, API_OPTION };

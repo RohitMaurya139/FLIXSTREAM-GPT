@@ -1,9 +1,11 @@
 // Import React library
-import React from "react";
 
 // Import the Header component from the same folder
 import Header from "./Header";
-
+import useNowPlayingMovies from "../hook/useNowPlayingMovies";
+import { use } from "react";
+import MainMovieContainer from "./MainMovieContainer.jsx";
+import SecondaryMovieContainer from "./SecondaryMovieContainer.jsx";
 /**
  * Browse Component
  * ----------------
@@ -14,6 +16,7 @@ import Header from "./Header";
  * - Can later be extended to display movies, shows, or other content after a user logs in
  */
 const Browse = () => {
+  useNowPlayingMovies()
   return (
     <div>
       {/* The Header is shown on top of the Browse page */}
@@ -22,7 +25,15 @@ const Browse = () => {
       {/* 
         You can add the main content section here.
         Example: Movie List, Search Bar, Categories, etc.
+        main container
+           - videoBackground
+           - video Title
+           Secondary container
+               - MovieList * n
+                 -card * n
       */}
+      <MainMovieContainer />
+      <SecondaryMovieContainer/>
     </div>
   );
 };
