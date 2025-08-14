@@ -9,38 +9,26 @@ import { getAnalytics } from "firebase/analytics";
 // Firebase authentication service (for user sign-in/sign-up)
 import { getAuth } from "firebase/auth";
 
-/**
- * TODO: Import other Firebase services here if you need them in the future:
- * Example:
- *   import { getFirestore } from "firebase/firestore"; // Cloud Firestore DB
- *   import { getStorage } from "firebase/storage";      // Cloud Storage
- */
+// Import the functions you need from the SDKs you need
 
-// ==== Firebase Configuration ====
-// This object contains credentials and settings for your Firebase project.
-// You get these values from the Firebase console (Project Settings → General)
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAUwGb-3UCdLDa1fyOHVyz_zz-N821KSsU", // Auth/API purpose
-  authDomain: "netflix-gpt-cf75e.firebaseapp.com", // Domain for hosted auth/page
-  projectId: "netflix-gpt-cf75e", // Unique project identifier
-  storageBucket: "netflix-gpt-cf75e.firebasestorage.app", // Cloud Storage bucket
-  messagingSenderId: "830026122298", // For Firebase Cloud Messaging
-  appId: "1:830026122298:web:c75dd15e6c3a51c8de2103", // Firebase App ID
-  measurementId: "G-18D8XY0HQ2", // Analytics ID (optional)
+  apiKey: "AIzaSyCdJ50sFTIBAHCVwAsmpHmdBSquYSbEWyc",
+  authDomain: "flixstream-gtp.firebaseapp.com",
+  projectId: "flixstream-gtp",
+  storageBucket: "flixstream-gtp.firebasestorage.app",
+  messagingSenderId: "193046779463",
+  appId: "1:193046779463:web:1976c18026f44eafc60362",
+  measurementId: "G-WS6HYGNQT1"
 };
 
-/**
- * ==== Initialize Firebase App ====
- * - This creates and configures a Firebase App instance using your `firebaseConfig`
- * - You must call this before using ANY Firebase services (Auth, Firestore, etc.)
- */
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-/**
- * ==== Set Up Analytics (Optional) ====
- * - Logs performance and usage metrics for the app
- * - Only works when the app is deployed on a server, not locally in dev mode
- */
 const analytics = getAnalytics(app);
 
 /**

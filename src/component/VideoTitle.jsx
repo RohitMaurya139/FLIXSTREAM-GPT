@@ -8,8 +8,7 @@ const VideoTitle = ({ title, overview }) => {
       className="
         absolute z-20 
         px-4 py-6 sm:px-6 md:px-8 
-        bg-gradient-to-r from-black/80 via-black/40 to-transparent 
-        rounded-lg 
+      
         max-w-full sm:max-w-md md:max-w-2xl 
         mt-24 sm:mt-28 md:mt-40 lg:mt-60
       "
