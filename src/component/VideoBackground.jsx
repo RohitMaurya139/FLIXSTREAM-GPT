@@ -21,8 +21,8 @@ const VideoBackground = ({ movieId }) => {
       ></iframe>
 
       {/* Gradient Overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-black to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-gray-950 to-transparent"></div>
     </div>
   );
 };

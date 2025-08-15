@@ -9,7 +9,7 @@ import { BG_IMG } from "../utils/Constants";
 
 // Import Firebase authentication methods
 import {
-  createUserWithEmailAndPassword, // Create new user account
+  createUserWithEmailAndPassword, reload, // Create new user account
   signInWithEmailAndPassword, // Log in existing user
   updateProfile, // Update user profile values (like displayName)
 } from "firebase/auth";
@@ -129,13 +129,13 @@ const Login = () => {
 
           // Update display name (since Firebase User object by default only stores email & uid)
           await updateProfile(user, { displayName: name.current.value });
-
+              await reload(user); 
           // Store updated user in Redux
           dispatch(
             addUser({
               uid: user.uid,
               email: user.email,
-              displayName: name.current.value,
+              displayName: user.displayName,
             })
           );
 
@@ -285,7 +285,7 @@ const Login = () => {
           {/* Toggle form link */}
           {isSignIn ? (
             <p className="text-gray-400 font-semibold mb-2">
-              New to Netflix?{" "}
+              New to FlixStream?{" "}
               <span
                 className="text-white cursor-pointer font-semibold underline"
                 onClick={toggleSignIn}

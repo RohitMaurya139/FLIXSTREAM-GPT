@@ -6,20 +6,21 @@ const VideoTitle = ({ title, overview }) => {
   return (
     <div
       className="
-        absolute z-20 
-        px-4 py-6 sm:px-6 md:px-8 
-      
-        max-w-full sm:max-w-md md:max-w-2xl 
-        mt-24 sm:mt-28 md:mt-40 lg:mt-60
+        absolute z-20
+        px-3 sm:px-6 md:px-8
+        py-4 sm:py-6
+        aspect-video
+        max-w-full sm:max-w-md md:max-w-2xl
+       pt-[35%] md:pt-[20%] lg:pt-[20%]
       "
     >
       {/* Title */}
       <h1
         className="
-          text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
-          font-extrabold 
-          mb-3 sm:mb-4 
-          text-white 
+          text-xl sm:text-2xl md:text-4xl lg:text-5xl
+          font-extrabold
+          mb-2 sm:mb-4
+          text-white
           drop-shadow-lg
         "
       >
@@ -29,11 +30,12 @@ const VideoTitle = ({ title, overview }) => {
       {/* Overview */}
       <p
         className="
-          mb-6 sm:mb-8 
-          text-white/90 
-          text-sm sm:text-base md:text-lg 
-          leading-relaxed 
-          line-clamp-3
+          mb-4 sm:mb-6 md:mb-8
+          text-white/90
+          text-xs sm:text-base md:text-lg
+          leading-normal sm:leading-relaxed
+          line-clamp-2 sm:line-clamp-3 md:line-clamp-4
+         w-[40%] lg:w-[60%]
         "
       >
         {overview}
@@ -42,42 +44,52 @@ const VideoTitle = ({ title, overview }) => {
       {/* Buttons */}
       <div
         className="
-          flex flex-col sm:flex-row 
-          gap-3 sm:gap-4
+          flex flex-col sm:flex-row
+          gap-2 sm:gap-4
+          items-stretch sm:items-center
+          w-full
         "
       >
         {/* Play Button */}
         <button
           className="
-            flex items-center justify-center gap-2 
+            flex items-center justify-center gap-2
             bg-white
-            w-full sm:w-[140px] md:w-[150px] 
-            hover:bg-gray-200 
-            text-black font-bold 
-            py-2 sm:py-3 px-4 sm:px-6 
-            rounded-lg shadow-lg 
+            hover:bg-gray-200
+            text-black font-bold
+            text-xs sm:text-sm
+            py-2 sm:py-3 px-4 sm:px-5
+            rounded-lg shadow-lg
+            w-fit
             transition-all duration-300 transform hover:scale-105
           "
         >
-          <FontAwesomeIcon icon={faCirclePlay} className="text-base sm:text-lg" />
+          <FontAwesomeIcon
+            icon={faCirclePlay}
+            className="text-sm sm:text-base"
+          />
           <span>Play</span>
         </button>
 
         {/* More Info Button */}
         <button
           className="
-            flex items-center justify-center gap-2 
+            flex items-center justify-center gap-2
             bg-gray-800/80
-            w-full sm:w-[160px] md:w-[180px] 
-            hover:bg-gray-900 
-            text-white font-semibold 
-            py-2 sm:py-3 px-4 sm:px-6 
-            rounded-lg shadow-lg 
-            transition-all duration-300 transform hover:scale-105 
+            hover:bg-gray-900
+            text-white font-semibold
+            text-xs sm:text-sm
+            py-2 sm:py-3 px-4 sm:px-5
+            rounded-lg shadow-lg
+           w-fit
+            transition-all duration-300 transform hover:scale-105
             backdrop-blur-sm
           "
         >
-          <FontAwesomeIcon icon={faCircleInfo} className="text-base sm:text-lg" />
+          <FontAwesomeIcon
+            icon={faCircleInfo}
+            className="text-sm sm:text-base"
+          />
           <span>More Info</span>
         </button>
       </div>
