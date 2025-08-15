@@ -1,5 +1,5 @@
 // Import React & Hooks
-import React, { useRef, useState } from "react";
+import  { useRef, useState } from "react";
 
 // Import Header component
 import Header from "./Header";
@@ -24,16 +24,7 @@ import { useDispatch } from "react-redux";
 // Redux action to store user info
 import { addUser } from "../utils/userSlice";
 
-/**
- * LOGIN COMPONENT
- * ----------------
- * This component handles:
- * - Sign In (uses `signInWithEmailAndPassword`)
- * - Sign Up (uses `createUserWithEmailAndPassword` + `updateProfile`)
- * - Form validation before sending to Firebase
- * - Storing user info in Redux
- * - Redirecting after login
- */
+
 const Login = () => {
   
   const dispatch = useDispatch(); // Send actions to Redux store
@@ -61,14 +52,7 @@ const Login = () => {
     setSuccessMessage(null);
   }
 
-  /**
-   * Handles the Sign In / Sign Up button click
-   * 1. Validates the data using custom validation helpers
-   * 2. If Sign In → use Firebase's `signInWithEmailAndPassword`
-   * 3. If Sign Up → use Firebase's `createUserWithEmailAndPassword` + `updateProfile`
-   * 4. Store logged in user in Redux
-   * 5. Redirect to Browse page
-   */
+ 
   const handleButtonClick = async () => {
     let message;
 
