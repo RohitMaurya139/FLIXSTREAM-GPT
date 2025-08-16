@@ -34,30 +34,61 @@ const Header = () => {
   }, [dispatch, navigate]);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-gradient-to-b from-black/70 to-transparent z-50 px-4 py-3 lg:px-10 lg:py-5 flex justify-between items-center">
-      {/* LOGO */}
+    <header
+      className="
+        fixed top-0 left-0 w-screen z-50
+        px-4 sm:px-6 md:px-10
+        py-2 flex justify-between items-center
+        bg-gradient-to-b from-black to-transparent
+      "
+    >
+      {/* Logo */}
       <h1
         onClick={() => navigate("/browse")}
         aria-label="Home"
-        className="cursor-pointer text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-wide text-red-600 drop-shadow-lg hover:scale-105 hover:text-red-600 transition-all duration-300"
+        className="
+          cursor-pointer
+          text-xl sm:text-2xl md:text-3xl
+          font-extrabold tracking-wide text-red-600
+          drop-shadow-lg
+          hover:scale-105 transition-all duration-300
+        "
       >
         FLIXSTREAM
       </h1>
 
-      {/* USER INFO */}
+      {/* User Info */}
       {user?.uid && (
-        <div className="flex items-center gap-4 bg-black/50 backdrop-blur-sm px-2 py-1 rounded-lg border border-red-500 shadow-lg lg:px-3 lg:py-1">
+        <div
+          className="
+            flex items-center gap-2 sm:gap-3
+            bg-black/50 backdrop-blur-sm
+            px-2 sm:px-3 py-1
+            rounded-lg border border-red-500 shadow-lg
+          "
+        >
           <img
             src={userIcon}
             alt="User"
-            className=" rounded-sm  object-cover size-6 lg:size-8"
+            className="rounded-sm object-cover w-6 h-6 sm:w-8 sm:h-8"
           />
-          <div className="flex flex-col items-start">
-            <span className="font-bold text-red-500 text-sm md:text-base truncate max-w-[120px] md:max-w-[160px]">
+          <div className="flex flex-col items-start max-w-[90px] sm:max-w-[120px] md:max-w-[160px] overflow-hidden">
+            <span
+              className="
+                font-bold text-red-500
+                text-xs sm:text-sm md:text-base
+                truncate
+              "
+            >
               {user.displayName || "User"}
             </span>
             <button
-              className="text-xs font-semibold md:text-sm text-gray-300 hover:text-red-500 transition-colors duration-200"
+              className="
+                text-[10px] sm:text-xs md:text-sm
+                font-semibold
+                text-gray-300 hover:text-red-500
+                transition-colors duration-200
+              "
               onClick={handleSignOut}
               aria-label="Sign Out"
             >

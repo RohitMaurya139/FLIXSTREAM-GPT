@@ -1,28 +1,26 @@
-import { Suspense, lazy } from "react";
-import useNowPlayingMovies from "../hook/useNowPlayingMovies";
 
-const Header = lazy(() => import("./Header"));
-const MainMovieContainer = lazy(() => import("./MainMovieContainer"));
-const SecondaryMovieContainer = lazy(() => import("./SecondaryMovieContainer"));
+import useNowPlayingMovies from "../hook/useNowPlayingMovies";
+import usePopularMovies from "../hook/usePopularMovies";
+import useTopRatedMovies from "../hook/useTopRatedMovies";
+import useTrendingMovies from "../hook/useTrendingMovies";
+import useUpcomingMovies from "../hook/useUpcomingMovies";
+import Header from "./Header";
+import MainMovieContainer from "./MainMovieContainer";
+import SecondaryMovieContainer from "./SecondaryMovieContainer";
 
 const Browse = () => {
   useNowPlayingMovies();
-
+  usePopularMovies();
+  useTopRatedMovies();
+  useUpcomingMovies();
+  useTrendingMovies()
   return (
-    <div>
-      <Suspense fallback={<div>Loading header...</div>}>
-        <Header />
-      </Suspense>
-
-      <Suspense fallback={<div>Loading main content...</div>}>
-        <MainMovieContainer />
-      </Suspense>
-
-      <Suspense fallback={<div>Loading more movies...</div>}>
-        <SecondaryMovieContainer />
-      </Suspense>
+    <div className="bg-black min-h-screen w-screen inset-0 overflow-x-hidden">
+      <Header />
+      <MainMovieContainer />
+      <SecondaryMovieContainer />
     </div>
   );
 };
-
 export default Browse;
+

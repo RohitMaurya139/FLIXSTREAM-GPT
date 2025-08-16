@@ -1,4 +1,3 @@
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,16 +7,15 @@ const VideoTitle = ({ title, overview }) => {
       className="
         absolute z-20
         px-3 sm:px-6 md:px-8
-        py-4 sm:py-6
         aspect-video
         max-w-full sm:max-w-md md:max-w-2xl
-       pt-[35%] md:pt-[20%] lg:pt-[20%]
+        pt-[30%] sm:pt-[25%] md:pt-[20%]
       "
     >
       {/* Title */}
       <h1
         className="
-          text-xl sm:text-2xl md:text-4xl lg:text-5xl
+          text-lg sm:text-2xl md:text-4xl lg:text-5xl
           font-extrabold
           mb-2 sm:mb-4
           text-white
@@ -27,15 +25,16 @@ const VideoTitle = ({ title, overview }) => {
         {title}
       </h1>
 
-      {/* Overview */}
+      {/* Overview - hidden on small */}
       <p
         className="
-          mb-4 sm:mb-6 md:mb-8
+          hidden sm:block
+          mb-3 sm:mb-4 md:mb-6
           text-white/90
-          text-xs sm:text-base md:text-lg
-          leading-normal sm:leading-relaxed
-          line-clamp-2 sm:line-clamp-3 md:line-clamp-4
-         w-[40%] lg:w-[60%]
+          text-xs sm:text-sm md:text-lg
+          leading-snug sm:leading-normal md:leading-relaxed
+          line-clamp-3 sm:line-clamp-4 md:line-clamp-5
+          w-[90%] sm:w-3/4 md:w-2/3
         "
       >
         {overview}
@@ -44,10 +43,9 @@ const VideoTitle = ({ title, overview }) => {
       {/* Buttons */}
       <div
         className="
-          flex flex-col sm:flex-row
-          gap-2 sm:gap-4
-          items-stretch sm:items-center
-          w-full
+          flex 
+          gap-2 
+          items-start sm:items-center
         "
       >
         {/* Play Button */}
@@ -57,16 +55,16 @@ const VideoTitle = ({ title, overview }) => {
             bg-white
             hover:bg-gray-200
             text-black font-bold
-            text-xs sm:text-sm
+            text-xs sm:text-sm md:text-base
             py-2 sm:py-3 px-4 sm:px-5
             rounded-lg shadow-lg
-            w-fit
+            w-auto
             transition-all duration-300 transform hover:scale-105
           "
         >
           <FontAwesomeIcon
             icon={faCirclePlay}
-            className="text-sm sm:text-base"
+            className="text-sm sm:text-base md:text-lg"
           />
           <span>Play</span>
         </button>
@@ -78,17 +76,17 @@ const VideoTitle = ({ title, overview }) => {
             bg-gray-800/80
             hover:bg-gray-900
             text-white font-semibold
-            text-xs sm:text-sm
+            text-xs sm:text-sm md:text-base
             py-2 sm:py-3 px-4 sm:px-5
             rounded-lg shadow-lg
-           w-fit
+            w-auto
             transition-all duration-300 transform hover:scale-105
             backdrop-blur-sm
           "
         >
           <FontAwesomeIcon
             icon={faCircleInfo}
-            className="text-sm sm:text-base"
+            className="text-sm sm:text-base md:text-lg"
           />
           <span>More Info</span>
         </button>

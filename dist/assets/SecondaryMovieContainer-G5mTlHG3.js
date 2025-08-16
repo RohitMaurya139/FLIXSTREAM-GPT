@@ -1,1 +1,0 @@
-import{j as e,e as s}from"./react-vendor-INFFXlDm.js";import"./vendor-BitOsjU2.js";const n=({title:i,movies:o})=>(console.log(o),e.jsx("div",{children:e.jsxs("div",{children:[e.jsx("h1",{children:i}),e.jsx("div",{})]})})),c=()=>{const i=s(o=>o.movies);return e.jsx("div",{children:e.jsx(n,{title:"Now PLaying",movies:i.NowPlayingMovies})})};export{c as default};
