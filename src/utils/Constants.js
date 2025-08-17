@@ -18,6 +18,10 @@ const BG_IMG =
            accept: "application/json",
          },
        }
+const SUPPORTED_LANGUAGES = [
+  { identifier: "english", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+];
 
-
-export { BG_IMG, API_OPTION,IMG_CDN_URL };
+export { BG_IMG, API_OPTION,IMG_CDN_URL,SUPPORTED_LANGUAGES };
