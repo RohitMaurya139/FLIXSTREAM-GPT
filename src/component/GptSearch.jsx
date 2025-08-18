@@ -4,7 +4,7 @@ import GtpMovieSuggestion from "./GtpMovieSuggestion.jsx";
 
 const GptSearch = () => {
   return (
-    <div>
+    <div className="bg-gray-800 ">
       <GptSearchBar />
       <GtpMovieSuggestion />
     </div>

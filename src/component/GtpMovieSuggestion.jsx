@@ -7,8 +7,8 @@ const GtpMovieSuggestion = () => {
   const searchQuery = useSelector((store) => store.movies.SearchQuery); // or wherever you store your search input
 
   return (
-    <div className="bg-black text-white">
-      <div className="mt-6 md:mt-10 px-2 md:px-6 relative z-20">
+    <div className="bg-gradient-to-b from-gray-800 via-gray-900 to-gray-950 text-white">
+      <div className="  px-2 md:px-6 relative z-20">
         {searchQuery && (
           <h2 className="mb-4 text-2xl font-bold">
             Search results for{" "}
