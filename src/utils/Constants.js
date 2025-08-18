@@ -14,5 +14,5 @@ const SUPPORTED_LANGUAGES = [
   { identifier: "spanish", name: "Spanish" },
 ];
 
-const OPEN_AI_API = import.meta.env.VITE_OPEN_AI_API_KEY;
-export { BG_IMG, API_OPTION, IMG_CDN_URL, SUPPORTED_LANGUAGES, OPEN_AI_API };
+
+export { BG_IMG, API_OPTION, IMG_CDN_URL, SUPPORTED_LANGUAGES};
