@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import gtpSliceReducer from "./gtpSlice";
 import userSliceReducer from "./userSlice";
 import movieSliceReducer from "./movieSlice"
-
+import configSliceReducer from "./configSlice";
 
 const appStore = configureStore({
   reducer: {
@@ -13,6 +13,7 @@ const appStore = configureStore({
     user: userSliceReducer,
     movies: movieSliceReducer,
     gtp: gtpSliceReducer,
+    config: configSliceReducer
   },
 });
 

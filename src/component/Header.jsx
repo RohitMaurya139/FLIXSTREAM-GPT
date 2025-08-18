@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import userIcon from "../assets/userIcon.PNG";
 import {toggleGtpSearchButton, toggleGtpSearchView} from "../utils/gtpSlice"
 import { SUPPORTED_LANGUAGES } from "../utils/Constants";
+import { changeLanguage } from "../utils/configSlice";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -41,6 +42,9 @@ const Header = () => {
     dispatch(toggleGtpSearchButton());
    
   }
+  const HandelLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  }
   return (
     <header
       className="
@@ -68,13 +72,18 @@ const Header = () => {
       {/* User Info */}
       {user?.uid && (
         <div className="flex gap-1 items-center">
-          <select className="block w-25 px-1 py-2 rounded-lg  bg-white text-gray-700 text-md ">
-            {SUPPORTED_LANGUAGES.map((lang) => (
-              <option key={lang.identifier} value={lang.identifier}>
-                {lang.name}
-              </option>
-            ))}
-          </select>
+          {gtp.showGtpSearch && (
+            <select
+              className="block w-25 px-1 py-2 rounded-lg  bg-white text-gray-700 text-md "
+              onChange={HandelLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
 
           <button
             className=" h-10  w-30 bg-red-500 text-white font-semibold text-md hover:bg-red-700 rounded-sm cursor-pointer"
