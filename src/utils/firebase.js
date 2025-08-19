@@ -9,13 +9,13 @@ import { getAuth } from "firebase/auth";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCdJ50sFTIBAHCVwAsmpHmdBSquYSbEWyc",
+  apiKey: import.meta.env.VITE_FIREBASE_KEY,
   authDomain: "flixstream-gtp.firebaseapp.com",
   projectId: "flixstream-gtp",
   storageBucket: "flixstream-gtp.firebasestorage.app",
-  messagingSenderId: "193046779463",
-  appId: "1:193046779463:web:1976c18026f44eafc60362",
-  measurementId: "G-WS6HYGNQT1"
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
+  measurementId: "G-WS6HYGNQT1",
 };
 
 // Initialize Firebase
