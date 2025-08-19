@@ -4,7 +4,7 @@ import Login from "./Login"
 import Browse from "./Browse"
 import Terms from "../pages/Term";
 import Privacy from "../pages/Privacy";
-
+import MovieDetails from "./MovieDetails"
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +18,7 @@ const appRouter = createBrowserRouter([
     path:"/terms", element:(<Terms />)
       
   },
+  {path:"/movie/:id", element:(<MovieDetails />)},
   {
     path:"/privacy", element:(<Privacy />)
   },

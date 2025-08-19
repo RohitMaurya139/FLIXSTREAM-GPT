@@ -5,7 +5,7 @@ import gtpSliceReducer from "./gtpSlice";
 import userSliceReducer from "./userSlice";
 import movieSliceReducer from "./movieSlice"
 import configSliceReducer from "./configSlice";
-
+import movieDetailsSliceReducer from "./movieDetailsSlice"
 const appStore = configureStore({
   reducer: {
     // Key: 'user' becomes the state.user inside Redux store
@@ -13,7 +13,9 @@ const appStore = configureStore({
     user: userSliceReducer,
     movies: movieSliceReducer,
     gtp: gtpSliceReducer,
-    config: configSliceReducer
+    config: configSliceReducer,
+  movieDetails: movieDetailsSliceReducer
+
   },
 });
 

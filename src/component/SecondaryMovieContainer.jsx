@@ -8,7 +8,7 @@ const SecondaryMovieContainer = () => {
     <div className="bg-black text-white">
       <div className="mt-6 md:mt-10 px-2 md:px-6 relative z-20">
         <MovieList title="Now Playing" movies={movies.NowPlayingMovies} />
-        <MovieList title="Trending" movies={movies.TrendingMovies} />
+        <MovieList title="Trending Today" movies={movies.TrendingMovies} />
         <MovieList title="Popular" movies={movies.PopularMovies} />
         <MovieList title="Top Rated" movies={movies.TopRatedMovies} />
         <MovieList title="Upcoming" movies={movies.UpcomingMovies} />

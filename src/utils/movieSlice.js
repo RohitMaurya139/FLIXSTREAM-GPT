@@ -10,7 +10,7 @@ const movieSlice = createSlice({
     TopRatedMovies: null,
     UpcomingMovies: null,
     TrendingMovies: null,
-    SearchQuery:null,
+    SearchQuery: null,
     SearchResultMovies: null,
   },
   reducers: {
