@@ -92,7 +92,7 @@ const Header = () => {
                        w-full sm:w-auto"
             onClick={handleGptSearch}
           >
-            {gtp.showGtpSearchButton ? "Home" : "GTP Search"}
+            {gtp.showGtpSearchButton ? "Home" : "GPT Search"}
           </button>
 
           {/* User Profile Info */}

@@ -9,6 +9,7 @@ const movieDetailsSlice = createSlice({
     DataAlternativeTitle: null,
     DataImages: null,
     DataRecommended: null,
+    TrailerVideo: null,
     DataReview: null,
   },
 
@@ -28,6 +29,9 @@ const movieDetailsSlice = createSlice({
     addDataReview: (state, action) => {
       state.DataReview = action.payload;
     },
+    addTrailerVideo: (state, action) => {
+      state.TrailerVideo = action.payload;
+    },
   },
 });
 export const {
@@ -36,5 +40,6 @@ export const {
   addDataImages,
   addDataRecommended,
   addDataReview,
+  addTrailerVideo,
 } = movieDetailsSlice.actions;
 export default movieDetailsSlice.reducer

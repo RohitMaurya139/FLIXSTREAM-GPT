@@ -3,9 +3,12 @@ import useGetMovieDetails from "../hook/useGetMovieDetails";
 import { useSelector } from "react-redux";
 import { IMG_CDN_URL } from "../utils/Constants";
 import MovieList from "./MovieList"
+import TrailerVideo from "./TrailerVideo";
 const MovieDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+ 
+  
   useGetMovieDetails(id); // fetch details using your hook
 
   const movieDetails = useSelector((state) => state.movieDetails.DataDetails);
@@ -138,14 +141,21 @@ const MovieDetails = () => {
                 Alternative Titles
               </h2>
               <ul className="text-gray-300 italic">
-                {alternativeTitles?.titles?.map((title) => (
-                  <li key={title.iso_3166_1}>{title.title}</li>
-                )) || "No alternative titles found."}
+                {alternativeTitles?.titles?.length > 0 ? (
+                  alternativeTitles.titles
+                    .slice(0, 4)
+                    .map((title) => (
+                      <li key={title.iso_3166_1}>{title.title}</li>
+                    ))
+                ) : (
+                  <li>No alternative titles found.</li>
+                )}
               </ul>
             </section>
           </div>
         </div>
         <div className=" px-2 md:px-6 relative z-20 bg-gradient-to-b from-gray-800 via-gray-900 to-gray-950">
+          <TrailerVideo  />
           <MovieList
             title="Recommended Movies"
             movies={recommended?.results || []}
