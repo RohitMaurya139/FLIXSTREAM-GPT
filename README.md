@@ -14,7 +14,7 @@
 ## 📖 **About the Project**
 
 **FlixStream GPT** is a **Netflix-inspired streaming platform** built with **React, Vite, Tailwind CSS, Redux, Firebase Authentication**, and **TMDB API**.  
-It includes an **AI-powered movie search** using GPT and a **multi-language feature** for a personalized experience.
+It includes an **movie search** and a **multi-language feature** for a personalized experience.
 
 ---
 
