@@ -1,6 +1,6 @@
 # 🎬 FlixStream GPT
 
-### 🎥 **Demo: click 👇👇 **
+### 🎥 **Demo: click 👇👇**
 
 [![Watch the Demo](src/assets/sc4.png)](https://www.linkedin.com/posts/rohit139maurya_reactjs-vite-redux-activity-7363808256030371840-0bL5?utm_source=share&utm_medium=member_desktop&rcm=ACoAADiphM0Bd4-cygch_E3VXOoyvmcHKjrd4Yc)
 
