@@ -1,6 +1,6 @@
 # 🎬 FlixStream GPT
 
-### 🎥 **Demo: click 👇👇 **
+### 🎥 **Demo: click 👇👇**
 
 [![Watch the Demo](src/assets/sc4.png)](https://www.linkedin.com/posts/rohit139maurya_reactjs-vite-redux-activity-7363808256030371840-0bL5?utm_source=share&utm_medium=member_desktop&rcm=ACoAADiphM0Bd4-cygch_E3VXOoyvmcHKjrd4Yc)
 
@@ -14,7 +14,7 @@
 ## 📖 **About the Project**
 
 **FlixStream GPT** is a **Netflix-inspired streaming platform** built with **React, Vite, Tailwind CSS, Redux, Firebase Authentication**, and **TMDB API**.  
-It includes an **AI-powered movie search** using GPT and a **multi-language feature** for a personalized experience.
+It includes an **movie search** and a **multi-language feature** for a personalized experience.
 
 ---
 
