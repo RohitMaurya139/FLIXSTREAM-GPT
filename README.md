@@ -40,9 +40,9 @@ It includes an **AI-powered movie search** using GPT and a **multi-language feat
 ## 🔥 **Preview**
 
 ### 📸 **Screenshots**
-
 ![Screenshot](src/assets/sc1.png)
 ![Screenshot](src/assets/sc2.png)
+![Screenshot](src/assets/sc11.PNG)
 ![Screenshot](src/assets/sc3.png)
 ![Screenshot](src/assets/sc4.png)
 ![Screenshot](src/assets/sc5.png)
